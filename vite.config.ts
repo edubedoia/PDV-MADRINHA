@@ -11,6 +11,7 @@ export default defineConfig(() => {
       tailwindcss(),
       VitePWA({
         registerType: 'autoUpdate',
+        manifestFilename: 'manifest.json',
         includeAssets: ['favicon.png', 'apple-touch-icon.png', 'pwa-192x192.png', 'pwa-512x512.png', 'icon.svg', 'madrinha_logo.png', 'madrinha_logo.svg'],
         manifest: {
           name: 'Madrinha PDV',
