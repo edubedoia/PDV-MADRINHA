@@ -42,18 +42,26 @@ export default function InstallModal() {
     }
 
     const handleBeforeInstallPrompt = (e: Event) => {
-      console.log('PWA: local beforeinstallprompt fired!');
+      console.log('PWA: beforeinstallprompt fired!');
       e.preventDefault();
       window.deferredPWAInstallPrompt = e;
       setDeferredPrompt(e as BeforeInstallPromptEvent);
     };
 
+    const handleAppInstalled = () => {
+      console.log('PWA: App was successfully installed');
+      setIsStandalone(true);
+      setIsOpen(false);
+    };
+
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
     window.addEventListener('pwa-prompt-ready', handlePromptReady);
+    window.addEventListener('appinstalled', handleAppInstalled);
 
     return () => {
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
       window.removeEventListener('pwa-prompt-ready', handlePromptReady);
+      window.removeEventListener('appinstalled', handleAppInstalled);
     };
   }, []);
 

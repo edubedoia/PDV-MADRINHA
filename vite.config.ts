@@ -12,17 +12,20 @@ export default defineConfig(() => {
       VitePWA({
         registerType: 'autoUpdate',
         manifestFilename: 'manifest.json',
-        includeAssets: ['favicon.png', 'apple-touch-icon.png', 'pwa-192x192.png', 'pwa-512x512.png', 'icon.svg', 'madrinha_logo.png', 'madrinha_logo.svg'],
+        includeAssets: ['favicon.png', 'apple-touch-icon.png', 'pwa-192x192.png', 'pwa-512x512.png', 'pwa-maskable-512x512.png', 'icon.svg', 'madrinha_logo.png', 'madrinha_logo.svg'],
         manifest: {
+          id: '/',
           name: 'Madrinha PDV',
-          short_name: 'Madrinha PDV',
+          short_name: 'Madrinha',
           description: 'PDV e Diário de Feiras para a Madrinha Cozinha Artesanal',
           theme_color: '#ea580c',
           background_color: '#09090b',
           display: 'standalone',
+          display_override: ['window-controls-overlay', 'standalone', 'minimal-ui'],
           orientation: 'portrait',
           start_url: '/',
           scope: '/',
+          categories: ['business', 'productivity', 'utilities'],
           icons: [
             {
               src: '/pwa-192x192.png',
@@ -37,16 +40,10 @@ export default defineConfig(() => {
               purpose: 'any'
             },
             {
-              src: '/pwa-512x512.png',
+              src: '/pwa-maskable-512x512.png',
               sizes: '512x512',
               type: 'image/png',
               purpose: 'maskable'
-            },
-            {
-              src: '/madrinha_logo.png',
-              sizes: '512x512',
-              type: 'image/png',
-              purpose: 'any'
             }
           ]
         },
